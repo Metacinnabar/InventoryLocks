@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using System.Reflection;
 using Terraria;
+using Terraria.ID;
 using Terraria.GameContent.Achievements;
 using Terraria.GameContent.UI.Chat;
 using Terraria.ModLoader;
@@ -398,7 +399,8 @@ namespace InventoryLocks
 			if (item.IsAir && Main.keyState.IsKeyDown(Main.FavoriteKey))
 			{
 				item.SetDefaults(ModContent.ItemType<ItemLock>());
-				item.favorited = true;
+                item.favorited = true;
+                Main.PlaySound(SoundID.Unlock);
 				return true;
 			}
 
