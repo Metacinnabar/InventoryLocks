@@ -399,8 +399,8 @@ namespace InventoryLocks
 			if (item.IsAir && Main.keyState.IsKeyDown(Main.FavoriteKey))
 			{
 				item.SetDefaults(ModContent.ItemType<ItemLock>());
-                item.favorited = true;
-                Main.PlaySound(SoundID.Unlock);
+				item.favorited = true;
+				Main.PlaySound(SoundID.Unlock);
 				return true;
 			}
 

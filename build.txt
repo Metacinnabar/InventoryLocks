@@ -1,4 +1,4 @@
-displayName = Inventory Locks
+displayName = Inventory Locks - Rework 
 author = GoodPro712
-version = 1.0
+version = 2.1
 homepage = https://forums.terraria.org/index.php?threads/inventory-locks.85551/

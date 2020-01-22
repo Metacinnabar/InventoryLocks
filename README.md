@@ -4,7 +4,8 @@ This mod allows you to alt left click (the default favorite hotkey) a blank spot
 
 This mod took a long time to make... enjoy!
 
-Original mod idea by Crimsoneeye, who got me to rework it. (meaning the lock sprite is his)
+Original mod idea by Chem, who got me to rework it.
+Lock sprite by Crimsoneye
 
 I got a lot of help with this mod but it mainly comes down to Jopojelly and Darth Wankstain, thanks.
 
