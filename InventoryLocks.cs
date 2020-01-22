@@ -264,7 +264,7 @@ namespace InventoryLocks
 					}
 					else if (Main.mouseItem.type == 0 && inv[slot].type > 0)
 					{
-						Utils.Swap<Item>(ref inv[slot], ref Main.mouseItem);
+						Utils.Swap(ref inv[slot], ref Main.mouseItem);
 						if (inv[slot].type == 0 || inv[slot].stack < 1)
 						{
 							inv[slot] = new Item();
@@ -283,7 +283,7 @@ namespace InventoryLocks
 					{
 						if (Main.mouseItem.stack == 1)
 						{
-							Utils.Swap<Item>(ref inv[slot], ref Main.mouseItem);
+							Utils.Swap(ref inv[slot], ref Main.mouseItem);
 							if (inv[slot].type == 0 || inv[slot].stack < 1)
 							{
 								inv[slot] = new Item();
@@ -335,8 +335,7 @@ namespace InventoryLocks
 					Main.mouseItem.stack = 1;
 					if (inv[slot].buyOnce)
 					{
-						Main.mouseItem.value *= 5; // preserve item value for items sold to the shop
-												   //Main.mouseItem.Prefix((int)inv[slot].prefix); // no prefix, preserved by cloning
+						Main.mouseItem.value *= 5;
 					}
 					else
 					{
@@ -520,6 +519,11 @@ namespace InventoryLocks
 
 	internal class ItemLock : ModItem
 	{
+		public override void Update(ref float gravity, ref float maxFallSpeed)
+		{
+			item.active = false;
+		}
+
 		public override void UpdateInventory(Player player)
 		{
 			if (!item.favorited)
