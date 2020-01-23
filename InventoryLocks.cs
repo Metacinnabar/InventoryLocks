@@ -125,9 +125,9 @@ namespace InventoryLocks
 							}
 							else
 							{
-								int num2 = Main.mouseItem.maxStack - inv[slot].stack;
-								inv[slot].stack += num2;
-								Main.mouseItem.stack -= num2;
+								int stack = Main.mouseItem.maxStack - inv[slot].stack;
+								inv[slot].stack += stack;
+								Main.mouseItem.stack -= stack;
 							}
 						}
 					}
@@ -393,12 +393,12 @@ namespace InventoryLocks
 		{
 			Item item = inv[slot];
 
-			//Check if the slot has no item in it and the favorite key is down
-			if (item.IsAir && Main.keyState.IsKeyDown(Main.FavoriteKey))
+			//Check if the slot has no item in it and the favorite key is down and if the slot isnt the trash slot
+			if (item.IsAir && Main.keyState.IsKeyDown(Main.FavoriteKey) && inv[slot] != Main.LocalPlayer.trashItem)
 			{
-				//If true, add lock to inventory
+				//If true, add lock to inventory slot
 				item.SetDefaults(ModContent.ItemType<ItemLock>());
-				//Favorite lock
+				//Favorite lock item
 				item.favorited = true;
 				//Play sound
 				Main.PlaySound(SoundID.Unlock);
