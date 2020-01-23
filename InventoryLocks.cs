@@ -393,7 +393,7 @@ namespace InventoryLocks
 		{
 			Item item = inv[slot];
 
-			//Check if the slothas no item in it and the favorite key is down
+			//Check if the slot has no item in it and the favorite key is down
 			if (item.IsAir && Main.keyState.IsKeyDown(Main.FavoriteKey))
 			{
 				//If true, add lock to inventory
