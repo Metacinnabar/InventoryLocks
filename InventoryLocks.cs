@@ -7,6 +7,7 @@ using Terraria.GameContent.UI.Chat;
 using Terraria.ModLoader;
 using Terraria.UI;
 using Terraria.UI.Chat;
+using System.Collections.Generic;
 
 namespace InventoryLocks
 {
@@ -525,6 +526,23 @@ namespace InventoryLocks
 			if (!item.favorited)
 				//If its not, rremove the item from inventory
 				item.TurnToAir();
+		}
+	}
+
+	internal class ILGlobalItem : GlobalItem
+	{
+		public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+		{
+			//loop through every tooltip line
+			foreach (TooltipLine line in tooltips)
+			{
+				//check if tooltip line is the item name or favorite tooltips and its from ItemLock
+				if ((line.Name == "ItemName" || line.Name.StartsWith("Favorite")) && item.type == ModContent.ItemType<ItemLock>())
+				{
+					//if true remove the item name and favorite tooltips from ItemLock
+					line.text = "";
+				}
+			}
 		}
 	}
 }
