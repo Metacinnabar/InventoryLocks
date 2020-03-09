@@ -6,6 +6,7 @@ This mod took a long time to make... enjoy!
 Original mod idea by Chem, who got me to rework it.
 Lock sprite by Crimsoneye
 
+Thanks to Chem who fixed the being able to lock non-inventory slots bug!
 I got a lot of help with this mod but it mainly comes down to Jopojelly and Darth Wankstain, thanks.
 
 Discord: https://discord.gg/VrxSx4B
