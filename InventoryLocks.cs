@@ -391,10 +391,10 @@ namespace InventoryLocks
 
 		private bool ItemSlot_OverrideLeftClick(On.Terraria.UI.ItemSlot.orig_OverrideLeftClick orig, Item[] inv, int context, int slot)
 		{
-			Item item = inv[slot];
+            Item item = inv[slot];
 
-			//Check if the slot has no item in it and the favorite key is down and if the slot isnt the trash slot
-			if (item.IsAir && Main.keyState.IsKeyDown(Main.FavoriteKey) && inv[slot] != Main.LocalPlayer.trashItem)
+            //Check if the slot has no item in it and the favorite key is down and if the item in the slot can actually be favorited
+            if (item.IsAir && Main.keyState.IsKeyDown(Main.FavoriteKey) && CanFavoriteAt[context])
 			{
 				//If true, add lock to inventory slot
 				item.SetDefaults(ModContent.ItemType<ItemLock>());
@@ -495,8 +495,8 @@ namespace InventoryLocks
 				}
 			}
 
-			//Check if the slot has an item in it and the favorite key is down
-			if (item.IsAir && Main.keyState.IsKeyDown(Main.FavoriteKey))
+			//Check if the slot has an item in it and the favorite key is down and if the item in the slot can actually be favorited
+			if (item.IsAir && Main.keyState.IsKeyDown(Main.FavoriteKey) && CanFavoriteAt[context])
 				//Draw favorite cursor
 				Main.cursorOverride = 3;
 
@@ -520,13 +520,13 @@ namespace InventoryLocks
 			//When in world, set active to false to remove the item from the world
 			=> item.active = false;
 
-		public override void UpdateInventory(Player player)
-		{
-			//Check if the item is favorited
-			if (!item.favorited)
-				//If its not, rremove the item from inventory
-				item.TurnToAir();
-		}
+        public override void UpdateInventory(Player player)
+        {
+            //Check if the item is favorited
+            if (!item.favorited)
+                //If its not, remove the item from inventory
+                item.TurnToAir();
+        }
 	}
 
 	internal class ILGlobalItem : GlobalItem
